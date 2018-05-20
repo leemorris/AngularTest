@@ -1,0 +1,66 @@
+<div>
+        <span float:left >
+    Week of June 4 - June 17
+        </span>
+</div>
+<mat-nav-list dense style="width: 12%; display: inline-block;margin-right: 1%">
+    <mat-list-item role="listitem" *ngFor="let date of monday" [style.backgroundColor]=[date.color] [style.height.px]= [date.priority] style="margin-bottom:3px;border-radius:8px">
+        <mat-icon fontSet="fontawesome" class={{date.icon}} style="margin-right: 4px"></mat-icon>
+        {{date.clientName}}
+    </mat-list-item>
+    <span style='margin-left:15%'>Mon</span>
+    <br>
+    <span style='margin-left:15%'>4</span>
+</mat-nav-list>
+<mat-nav-list dense style="width: 12%; display: inline-block;margin-right: 1%">
+    <mat-list-item role="listitem" *ngFor="let date of tuesday" [style.backgroundColor]=[date.color] [style.height.px]= [date.priority] style="margin-bottom:3px;border-radius:8px">
+        <mat-icon fontSet="fontawesome" class={{date.icon}} style="margin-right: 4px"></mat-icon>
+        {{date.clientName}}
+    </mat-list-item>
+    <span style='margin-left:15%'>Tues</span>
+    <br>
+    <span style='margin-left:15%'>5</span>
+</mat-nav-list>
+<mat-nav-list dense style="width: 12%; display: inline-block;margin-right: 1%">
+    <mat-list-item role="listitem" *ngFor="let date of wednesday" [style.backgroundColor]=[date.color]  [style.height.px]= [date.priority] style="margin-bottom:3px;border-radius:8px">
+        <mat-icon fontSet="fontawesome" class={{date.icon}} style="margin-right: 4px"></mat-icon>
+        {{date.clientName}}
+    </mat-list-item>
+    <span style='margin-left:15%'>Wed</span>
+    <br>
+    <span style='margin-left:15%'>6</span>
+</mat-nav-list>
+<mat-nav-list dense style="width: 12%; display: inline-block;margin-right: 1%">
+    <mat-list-item role="listitem" *ngFor="let date of thursday" [style.backgroundColor]=[date.color] [style.height.px]= [date.priority] style="margin-bottom:3px;border-radius:8px">
+        <mat-icon fontSet="fontawesome" class={{date.icon}} style="margin-right: 4px"></mat-icon>
+        {{date.clientName}}
+    </mat-list-item>
+    <span style='margin-left:15%'>Thurs</span>
+    <br>
+    <span style='margin-left:15%'>7</span>
+</mat-nav-list>
+
+<mat-nav-list dense style="width: 12%; display: inline-block;margin-right: 1%">
+    <mat-list-item role="listitem" *ngFor="let date of friday" [style.backgroundColor]=[date.color] [style.height.px]= [date.priority] style="margin-bottom:3px;border-radius:8px">
+        <mat-icon fontSet="fontawesome" class={{date.icon}} style="margin-right: 4px"></mat-icon>
+        {{date.clientName}}
+    </mat-list-item>
+    <span style='margin-left:13%'>Fri</span>
+    <br>
+    <span style='margin-left:15%'>8</span>
+</mat-nav-list>
+
+
+<div class="chart-col">
+
+    <span>
+        Internal Resource Utilization
+    </span>
+
+    <ngx-charts-heat-map class="chart-container" [view]="view" [scheme]="colorScheme" [results]="calendarData" [animations]="animations"
+        [legend]="showLegend" [gradient]="gradient" (legendLabelClick)="onLegendLabelClick($event)" [xAxis]="showXAxis" [yAxis]="showYAxis"
+        [showXAxisLabel]="false" [showYAxisLabel]="false" [xAxisTickFormatting]="calendarAxisTickFormatting" [tooltipText]="calendarTooltipText"
+        [innerPadding]="innerPadding" [tooltipDisabled]="tooltipDisabled" (select)="select($event)">
+    </ngx-charts-heat-map>
+
+</div>

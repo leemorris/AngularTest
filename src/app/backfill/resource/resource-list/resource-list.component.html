@@ -1,0 +1,36 @@
+<form [formGroup]="resourceListForm">
+<fieldset>
+  <p-table #dt [columns]="selectedColumns" [value]="resourceList"  [resizableColumns]="true" [reorderableColumns]="true"  sortMode="multiple" columnResizeMode="expand">
+    <ng-template pTemplate="caption">
+        <div style="text-align:left">
+          <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" [ngModelOptions]="{standalone: true}" optionLabel="header"
+                        selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}" defaultLabel="Choose Columns"></p-multiSelect>
+        </div>
+        <div class="ui-helper-clearfix">
+            <button type="button" pButton icon="fa fa-file-o" iconPos="left" label="All Data" (click)="dt.exportCSV()"  style="float:right"></button>
+            <button type="button" pButton icon="fa fa-file" iconPos="left" label="Selection Only" (click)= "dt.exportCSV({selectionOnly:true}) " style="float:right"></button>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field" pReorderableColumn pResizableColumn >
+                {{col.header}}
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+            </th>
+            <th style="width:3em"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns" class="ui-resizable-column">
+                {{rowData[col.field]}}
+            </td>
+            <td>
+                    <button pButton icon="fa-search" (click)="onRowSelect(rowData)"></button>
+            </td>
+        </tr>
+    </ng-template>
+  <br/>
+</p-table>
+</fieldset>
+</form>
